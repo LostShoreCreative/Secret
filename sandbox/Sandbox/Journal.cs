@@ -12,7 +12,7 @@ static class Journal
     {
       string jsonString = File.ReadAllText(filename);
       journalEntries = JsonSerializer.Deserialize<List<Entry>>(jsonString);
-    }
+    }\
     catch
     {
       journalEntries = new List<Entry>();
