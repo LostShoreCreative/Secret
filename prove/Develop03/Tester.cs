@@ -4,7 +4,7 @@ using System.Text.Json.Serialization;
 static class Tester
 {
   private static List<Scripture> scriptures = new List<Scripture>();
-  Scripture scripture;
+  static Scripture scripture;
 
   static Tester()
   {
@@ -31,22 +31,22 @@ static class Tester
     File.WriteAllText("save.txt", jsonString);
   }
 
-  public void SelectScripture(int index)
+  public static void SelectScripture(int index)
   {
     scripture = scriptures[index];
   }
 
-  public void GetScriptures()
+  public static List<Scripture> GetScriptures()
   {
     return scriptures;
   }
 
-  public string GetScripture()
+  public static string GetScripture()
   {
     return scripture.ToString();
   }
 
-  public void RemoveWord()
+  public static void RemoveWord()
   {
     Random rand = new Random();
     int ranIndex;
@@ -54,7 +54,7 @@ static class Tester
     do
     {
       ranIndex = rand.Next(words.Length);
-    }while(!words[ranIndex].isShown)
-    words[i].isShown = false;
+    }while(!words[ranIndex].isShown);
+    words[ranIndex].isShown = false;
   }
 }

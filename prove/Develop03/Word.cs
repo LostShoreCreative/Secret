@@ -2,8 +2,6 @@ using System.Text;
 
 struct Word
 {
-  public readonly int Index;
-
   public bool isShown = true;
   private readonly string text;
   private readonly string altText;

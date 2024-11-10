@@ -41,7 +41,7 @@ class Program
 
     static void HandleMenu()
     {
-        Console.WriteLine("1. New Scripture\n2. Choose Scripture\,3. Quit(q)");
+        Console.WriteLine("1. New Scripture\n2. Choose Scripture\n3. Quit(q)");
         switch(Console.ReadLine().ToUpper())
         {
             case "1":
@@ -51,6 +51,7 @@ class Program
             case "2":
             case "LOAD":
             state = State.Load;
+            break;
             case "3":
             case "Q":
             break;
@@ -70,10 +71,10 @@ class Program
     }
     static void HandleLoad()
     {
-        Scripture[] scriptures = Tester.GetScriptures();
+        Scripture[] scriptures = Tester.GetScriptures().ToArray();
         for(int i = 0; i < scriptures.Length; i++)
         {
-            Console.WriteLine($"{i+1}. {scriptures[i].reference}")
+            Console.WriteLine($"{i+1}. {scriptures[i].reference}");
         }
         Console.WriteLine("Type the number of the scripture you want");
         int index = int.Parse(Console.ReadLine())-1;
@@ -96,5 +97,6 @@ class Program
             case "B":
             state = State.Menu;
             break;
+        }
     }
 }
