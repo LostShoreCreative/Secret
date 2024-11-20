@@ -1,0 +1,4 @@
+class CheckListGoal : Goal
+{
+  
+}
