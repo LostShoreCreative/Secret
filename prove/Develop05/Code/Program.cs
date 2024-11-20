@@ -36,4 +36,10 @@ class Program
     {
         isRunning = false;
     }
+
+    public static void ChangeWindow(Window newWindow, InputManager newInputManager)
+    {
+        window = newWindow;
+        inputManager = newInputManager;
+    }
 }

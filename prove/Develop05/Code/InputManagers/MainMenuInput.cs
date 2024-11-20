@@ -6,6 +6,7 @@ class MainMenuInput : InputManager
         switch(cki.Key)
         {
             case ConsoleKey.D1:
+            Program.ChangeWindow(new NewGoalWindow(), new NewGoalInput());
             break;
             case ConsoleKey.D2:
             break;

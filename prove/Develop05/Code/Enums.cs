@@ -7,3 +7,11 @@ enum Screen
   LoadGoals,
   RecordEvent
 }
+
+enum BuildTaskState
+{
+  ChooseType,
+  ChooseName,
+  SetDescription,
+  SetPointAmoumt
+}
