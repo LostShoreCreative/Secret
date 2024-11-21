@@ -37,9 +37,9 @@ class Program
         isRunning = false;
     }
 
-    public static void ChangeWindow(Window newWindow, InputManager newInputManager)
+    public static void ChangeWindow(InputManager newInputManager, Window newWindow)
     {
-        window = newWindow;
         inputManager = newInputManager;
+        window = newWindow;
     }
 }
