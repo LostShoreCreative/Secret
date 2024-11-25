@@ -13,5 +13,7 @@ enum BuildTaskState
   ChooseType,
   ChooseName,
   SetDescription,
-  SetPointAmoumt
+  SetPointAmoumt,
+  SetRepition,
+  SetCompletePoints
 }

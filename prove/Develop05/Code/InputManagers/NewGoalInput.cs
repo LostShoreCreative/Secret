@@ -137,4 +137,23 @@ class NewGoalInput : InputManager
     goalDescription = input;
     return true;
   }
+
+  private bool HandleSetPointAmount()
+  {
+    if(input.Trim().Equals("")) return false;
+    if(goalType == GoalType.CheckList)
+    {
+      bts = BuildTaskState.SetRepition;
+      return true;
+    }
+    switch(goalType)
+    {
+      case GoalType.Simple:
+      GoalTracker.MakeSimpleGoal(goalName, goalDescription, points);
+      break;
+      case GoalType.Eternal:
+      break;
+    }
+    return true;
+  }
 }
