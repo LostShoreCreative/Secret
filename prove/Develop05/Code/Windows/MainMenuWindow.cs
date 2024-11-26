@@ -1,6 +1,6 @@
 class MainMenuWindow : Window
 {
-  string[] data = {"MENU OPTIONS", "1. Create New Goal", "2. List Goals", "3. Save Goals", "4. Quit", "Type the number of the goal you want"};
+  string[] data = {"MENU OPTIONS", "1. Create New Goal", "2. List Goals", "3. Save Goals", "4. Quit", "Type the number of the goal you want", $"Points: {GoalTracker.GetPoints()}"};
   ScreenData[] formattedData;
 
   public MainMenuWindow()
@@ -10,7 +10,7 @@ class MainMenuWindow : Window
     for(int i = 0; i < data.Length; i++)
     {
       string text = data[i];
-      if(i == 0 || i == data.Length-1)
+      if(i == 0 || i == data.Length-1 || i == data.Length-2)
       {
         formattedData[i] = new ScreenData(text.ToCharArray(), middleRow+i, WindowManager.CenterTextOnColumn(data[0]));
       }

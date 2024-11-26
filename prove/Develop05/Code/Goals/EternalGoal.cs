@@ -2,7 +2,6 @@ using System.Text.Json.Serialization;
 
 class EternalGoal : Goal
 {
-  [JsonInclude]
   int timesCompleted;
   public EternalGoal(string name, string description, int points) : base(name, description, points)
   {

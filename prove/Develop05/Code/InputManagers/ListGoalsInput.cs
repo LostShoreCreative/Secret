@@ -42,12 +42,14 @@ class ListGoalsInput : InputManager
       HandleQ();
       break;
     }
+    MakeData();
     TransmitData();
   }
 
   public static string[] GetData()
   {
-    string[] trasmitData = data;
+    string[] trasmitData = new string[data.Length];
+    for(int i = 0; i < trasmitData.Length; i++) trasmitData[i] = data[i];
     string selectedTaskString = "->";
     trasmitData[selectedTask+1] = selectedTaskString + trasmitData[selectedTask+1];
     return trasmitData;
@@ -86,19 +88,19 @@ class ListGoalsInput : InputManager
 
   private void HandleEnter()
   {
-    GoalTracker.MarkGoalDone(selectedTask + (page * 5));
+    goals[selectedTask + (5* page)].GoalDone();
   }
 
   private void HandleUpArrow()
   {
-    if(selectedTask == 0) selectedTask = 4;
-    else selectedTask++;
+    if(selectedTask == 0) selectedTask = goals.Length%5-1;
+    else selectedTask--;
   }
 
   private void HandleDownArrow()
   {
-    if(selectedTask == 4) selectedTask = 0;
-    else selectedTask--;
+    if((selectedTask == goals.Length%5-1 && selectedTask != 0)|| selectedTask == 4) selectedTask = 0;
+    else selectedTask++;
   }
 
   private void HandleLeftArrow()
