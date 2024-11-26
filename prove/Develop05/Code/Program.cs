@@ -5,7 +5,6 @@ using System.ComponentModel.Design;
 class Program
 {
     static bool isRunning = true;
-    static Screen screen = Screen.MainMenu;
     static Window window = new MainMenuWindow();
     static InputManager inputManager = new MainMenuInput();
 
@@ -29,8 +28,6 @@ class Program
             Thread.Sleep(10);
         }
     }
-
-    public void SwitchScreen(Screen newScreen){}
 
     public static void Stop()
     {

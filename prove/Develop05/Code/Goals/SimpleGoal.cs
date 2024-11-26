@@ -1,5 +1,8 @@
+using System.Text.Json.Serialization;
+
 class SimpleGoal : Goal, ICompleteable
 {
+  [JsonInclude]
   bool goalDone = false;
   public SimpleGoal(string name, string description, int points):base(name, description, points)
   {

@@ -1,4 +1,4 @@
 interface ICompleteable
 {
-  public void GoalCompleted();
+  public abstract void GoalCompleted();
 }

@@ -12,7 +12,9 @@ class NewGoalInput : InputManager
   {
     "What is the name of your Goal: ",
     "What is a short description of it: ",
-    "What is the amount of points associated with this goal: "
+    "What is the amount of points associated with this goal: ",
+    "How many times would you like this goal to be done: ",
+    "How many bonus points for finishing: "
   };
 
   static string input = "";
@@ -24,6 +26,8 @@ class NewGoalInput : InputManager
   static string goalName;
   static string goalDescription;
   static int points;
+  static int bonusPoints;
+  static int timesToRepeat;
 
   public NewGoalInput()
   {
@@ -37,6 +41,8 @@ class NewGoalInput : InputManager
     goalName = "";
     goalDescription = "";
     points = 0;
+    bonusPoints = 0;
+    timesToRepeat = 0;
   }
 
   public override void HandleInput(ConsoleKeyInfo cki)
@@ -97,6 +103,13 @@ class NewGoalInput : InputManager
       didExectute = HandleSetDescription();
       break;
       case BuildTaskState.SetPointAmoumt:
+      didExectute = HandleSetPointAmount();
+      break;
+      case BuildTaskState.SetRepition:
+      didExectute = HandleSetRepition();
+      break;
+      case BuildTaskState.SetCompletePoints:
+      didExectute = HandleSetBonusPoints();
       break;
     }
     if(didExectute) AppendData();
@@ -141,6 +154,7 @@ class NewGoalInput : InputManager
   private bool HandleSetPointAmount()
   {
     if(input.Trim().Equals("")) return false;
+    points = int.Parse(input);
     if(goalType == GoalType.CheckList)
     {
       bts = BuildTaskState.SetRepition;
@@ -152,8 +166,28 @@ class NewGoalInput : InputManager
       GoalTracker.MakeSimpleGoal(goalName, goalDescription, points);
       break;
       case GoalType.Eternal:
+      GoalTracker.MakeEternalGoal(goalName, goalDescription, points);
       break;
     }
+    Program.ChangeWindow(new MainMenuInput(), new MainMenuWindow());
+    return true;
+  }
+
+  private bool HandleSetRepition()
+  {
+    if(input.Trim().Equals("")) return false;
+    bts = BuildTaskState.SetCompletePoints;
+    timesToRepeat = int.Parse(input);
+    return true;
+  }
+
+  private bool HandleSetBonusPoints()
+  {
+    if(input.Trim().Equals("")) return false;
+    bonusPoints = int.Parse(input);
+    GoalTracker.MakeCheckListGoal(goalName, goalDescription, points, timesToRepeat, bonusPoints);
+
+    Program.ChangeWindow(new MainMenuInput(), new MainMenuWindow());
     return true;
   }
 }

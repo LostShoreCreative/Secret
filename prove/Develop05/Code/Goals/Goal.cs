@@ -1,7 +1,12 @@
+using System.Text.Json.Serialization;
+
 abstract class Goal
 {
+  [JsonInclude]
   string name;
+  [JsonInclude]
   string description;
+  [JsonInclude]
   int points;
 
   public Goal(string name, string description, int points)
@@ -21,8 +26,8 @@ abstract class Goal
     GoalTracker.AddPoints(points);
   }
 
-    public override string ToString()
-    {
-        return $"{name} ({description})";
-    }
+  public override string ToString()
+  {
+    return $"{name} ({description})";
+  }
 }

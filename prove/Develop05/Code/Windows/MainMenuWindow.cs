@@ -1,6 +1,6 @@
 class MainMenuWindow : Window
 {
-  string[] data = {"MENU OPTIONS", "1. Create New Goal", "2. List Goals", "3. Save Goals", "4. Load Goals", "5. Record Event", "6. Quit", "Type the number of the goal you want"};
+  string[] data = {"MENU OPTIONS", "1. Create New Goal", "2. List Goals", "3. Save Goals", "4. Quit", "Type the number of the goal you want"};
   ScreenData[] formattedData;
 
   public MainMenuWindow()

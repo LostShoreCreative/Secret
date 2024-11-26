@@ -9,14 +9,12 @@ class MainMenuInput : InputManager
             Program.ChangeWindow(new NewGoalInput(), new NewGoalWindow());
             break;
             case ConsoleKey.D2:
+            Program.ChangeWindow(new ListGoalsInput(), new ListGoalsWindow());
             break;
             case ConsoleKey.D3:
+            GoalTracker.SaveGoals();
             break;
             case ConsoleKey.D4:
-            break;
-            case ConsoleKey.D5:
-            break;
-            case ConsoleKey.D6:
             Program.Stop();
             break;
         }
